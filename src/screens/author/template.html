@@ -1,0 +1,91 @@
+<div style="min-height:100vh;background:#F4F3F8;color:#14121F;font-family:'Plus Jakarta Sans',system-ui,sans-serif;display:flex;flex-wrap:wrap;align-items:flex-start">
+<div style="flex:1 1 248px;max-width:100%"><!--sidebar--></div>
+<main style="flex:999 1 560px;min-width:0;padding:28px 32px 64px">
+
+<section style="border-radius:32px;background:#fff;border:1px solid #E7E5EE;overflow:hidden">
+<div aria-hidden="true" style="position:relative;height:210px;background:#14121F;overflow:hidden">
+<div class="drift" style="position:absolute;width:260px;height:260px;border-radius:50%;background:#FFC93C;left:8%;top:-120px"></div>
+<div class="drift" style="position:absolute;width:200px;height:200px;border-radius:50%;background:#5B4BFF;right:16%;top:20px;animation-delay:-3s"></div>
+<div class="drift" style="position:absolute;width:140px;height:140px;border-radius:40px;background:#FF6B4A;right:4%;top:-30px;transform:rotate(20deg);animation-delay:-6s"></div>
+<div style="position:absolute;left:36%;bottom:24px;font:800 64px 'Bricolage Grotesque',sans-serif;color:rgba(255,255,255,.08);letter-spacing:-.04em">field logs daily</div>
+</div>
+<div style="padding:0 32px 28px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px;margin-top:-56px;position:relative">
+<span style="width:132px;height:132px;border-radius:36px;background:#FFC93C;color:#2A2000;display:grid;place-items:center;font:800 46px 'Bricolage Grotesque',sans-serif;border:6px solid #fff;transform:rotate(-4deg)">MO</span>
+<div style="flex:1 1 300px;min-width:0;padding-bottom:4px">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px"><h1 style="margin:0;font:800 38px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Mira Okafor</h1><span style="padding:5px 10px;border-radius:999px;background:#EEECFF;color:#3B2DC9;font-size:12px;font-weight:800">VERIFIED AUTHOR</span></div>
+<div style="margin-top:6px;font-size:14px;color:#5E5B70">@miraokafor · Lisbon · writes literary sci-fi · new field log every day at 7 AM</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<button type="button" class="press" onClick="{{toggleFollow}}" aria-pressed="{{followOn}}" style="position:relative;height:50px;padding:0 24px;border-radius:16px;font-weight:700;font-size:15px;cursor:pointer;transition:background .3s,color .3s;{{followStyle}}">{{followLabel}}<show-if value="{{followBurst}}"><span class="burst" aria-hidden="true"><i style="--a:0deg;background:#FFC93C"></i><i style="--a:45deg;background:#1FC8A0"></i><i style="--a:90deg;background:#FF7AC6"></i><i style="--a:135deg;background:#5B4BFF"></i><i style="--a:180deg;background:#FF6B4A"></i><i style="--a:225deg;background:#FFC93C"></i><i style="--a:270deg;background:#1FC8A0"></i><i style="--a:315deg;background:#FF7AC6"></i></span></show-if></button>
+<button type="button" class="press" onClick="{{toggleBell}}" aria-label="{{bellLabel}}" aria-pressed="{{bellPressed}}" style="width:50px;height:50px;border-radius:16px;cursor:pointer;display:grid;place-items:center;{{bellStyle}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 8a6 6 0 1112 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 004 0"/></svg></button>
+<a href="#/community" class="press" style="height:50px;padding:0 20px;border-radius:16px;border:1px solid #E7E5EE;display:inline-flex;align-items:center;font-weight:700;font-size:15px">Ask a question</a>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:0;border-top:1px solid #F0EEF5">
+<div style="flex:1 1 140px;padding:18px 32px;border-right:1px solid #F0EEF5"><div style="font:800 26px 'Bricolage Grotesque',sans-serif">{{followers}}</div><div style="font-size:13px;color:#5E5B70">followers</div></div>
+<div style="flex:1 1 140px;padding:18px 32px;border-right:1px solid #F0EEF5"><div style="font:800 26px 'Bricolage Grotesque',sans-serif">412</div><div style="font-size:13px;color:#5E5B70">daily stories</div></div>
+<div style="flex:1 1 140px;padding:18px 32px;border-right:1px solid #F0EEF5"><div style="font:800 26px 'Bricolage Grotesque',sans-serif">9</div><div style="font-size:13px;color:#5E5B70">stories → chapters</div></div>
+<div style="flex:1 1 140px;padding:18px 32px"><div style="font:800 26px 'Bricolage Grotesque',sans-serif;color:#C2410C">128</div><div style="font-size:13px;color:#5E5B70">day streak</div></div>
+</div>
+</section>
+
+<div class="cols" style="display:flex;flex-wrap:wrap;gap:24px;margin-top:24px;align-items:flex-start">
+<div style="flex:2 1 520px;min-width:0">
+<div role="tablist" aria-label="Profile tabs" style="display:inline-flex;gap:4px;padding:5px;border-radius:16px;background:#fff;border:1px solid #E7E5EE">
+<for-each list="{{tabs}}" as="t"><button type="button" role="tab" onClick="{{t.pick}}" style="height:42px;padding:0 18px;border-radius:12px;border:0;font-size:14px;font-weight:700;cursor:pointer;{{t.style}}">{{t.label}}</button></for-each>
+</div>
+<show-if value="{{isStories}}">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:16px">
+<for-each list="{{logs}}" as="l">
+<a href="#/feed" class="lift pop" style="display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:240px;padding:20px;border-radius:24px;background:{{l.bg}};color:{{l.ink}};animation-delay:{{l.d}}">
+<div style="display:flex;justify-content:space-between;font-size:12px;font-weight:800"><span>{{l.no}}</span><span style="opacity:.8">{{l.when}}</span></div>
+<p style="margin:0;font:800 19px/1.2 'Bricolage Grotesque',sans-serif">{{l.text}}</p>
+<div><show-if value="{{l.hasBadge}}"><span style="display:inline-block;margin-bottom:10px;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,.16);font-size:11px;font-weight:800">{{l.badge}}</span></show-if><div style="font-size:13px;font-weight:700;opacity:.85">♥ {{l.likes}} · {{l.replies}} replies</div></div>
+</a>
+</for-each>
+</div>
+</show-if>
+<show-if value="{{isBooks}}">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px">
+<a href="#/book" class="lift" style="display:block;padding:20px;border-radius:24px;background:#fff;border:1px solid #E7E5EE"><div style="height:220px;border-radius:14px;background:#14121F;position:relative;overflow:hidden"><div style="position:absolute;width:110px;height:110px;border-radius:50%;right:-30px;top:-30px;background:#FFC93C"></div><div style="position:absolute;inset:0;padding:16px;display:flex;align-items:flex-end;font:800 22px/1 'Bricolage Grotesque',sans-serif;color:#fff">The Cartographer of Silence</div></div><div style="margin-top:12px;font-weight:700">The Cartographer of Silence</div><div style="font-size:13px;color:#5E5B70">2024 · ★ 4.8 · 412 threads</div></a>
+<a href="#/book" class="lift" style="display:block;padding:20px;border-radius:24px;background:#fff;border:1px solid #E7E5EE"><div style="height:220px;border-radius:14px;background:#1FC8A0;position:relative;overflow:hidden"><div style="position:absolute;left:0;right:0;bottom:0;height:40%;background:#05332A"></div><div style="position:absolute;inset:0;padding:16px;font:800 22px/1 'Bricolage Grotesque',sans-serif;color:#05332A">Low Tide Atlas</div></div><div style="margin-top:12px;font-weight:700">Low Tide Atlas</div><div style="font-size:13px;color:#5E5B70">2021 · debut stories · ★ 4.5</div></a>
+<div style="padding:20px;border-radius:24px;background:#fff;border:2px dashed #CFCBDD"><div style="height:220px;border-radius:14px;background:#F4F3F8;display:grid;place-items:center;text-align:center;padding:16px;font:800 22px/1.05 'Bricolage Grotesque',sans-serif;color:#5B4BFF">The Lantern Census<br>Mar 2027</div><div style="margin-top:12px;font-weight:700">The Lantern Census</div><div style="font-size:13px;color:#5E5B70">Pre-order · 5.2k waiting</div></div>
+</div>
+</show-if>
+<show-if value="{{isQA}}">
+<div style="margin-top:16px;padding:28px;border-radius:28px;background:#5B4BFF;color:#fff">
+<div style="font-size:12px;font-weight:800;letter-spacing:.08em;color:#FFC93C">LIVE Q&amp;A · SATURDAY 7 PM IST</div>
+<div style="margin-top:10px;font:800 30px/1.1 'Bricolage Grotesque',sans-serif">Ask Mira anything about Cartographer</div>
+<div style="margin-top:12px;font-size:15px;color:#E1DDFF">{{rsvpCount}} going · 240 questions submitted · top question: “Is Ada alive?”</div>
+<button type="button" class="press" onClick="{{toggleRsvp}}" style="margin-top:18px;height:50px;padding:0 22px;border-radius:16px;border:0;font-weight:700;font-size:15px;cursor:pointer;{{rsvpStyle}}">{{rsvpLabel}}</button>
+</div>
+</show-if>
+</div>
+
+<aside style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:16px">
+<a href="#/leaderboard" class="lift" style="display:block;padding:22px;border-radius:24px;background:#14121F;color:#fff">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 18px 'Bricolage Grotesque',sans-serif">Influence Score</span><span style="padding:5px 10px;border-radius:999px;background:#FFC93C;color:#2A2000;font-size:12px;font-weight:800">#1 THIS WEEK</span></div>
+<div style="display:flex;align-items:center;gap:18px;margin-top:14px"><svg width="104" height="104" viewBox="0 0 104 104" role="img" aria-label="Influence score 94"><circle cx="52" cy="52" r="44" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="12"/><circle cx="52" cy="52" r="44" fill="none" class="ring" stroke="#1FC8A0" stroke-width="12" stroke-linecap="round" stroke-dasharray="260 277" transform="rotate(-90 52 52)"/><text x="52" y="61" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="28" fill="#fff">94</text></svg>
+<div style="display:flex;flex-direction:column;gap:8px;flex:1;font-size:12px;font-weight:600;color:#C9C6D8">
+<for-each list="{{score}}" as="sc"><div><div style="display:flex;justify-content:space-between"><span>{{sc.l}}</span><span style="color:#fff">{{sc.v}}</span></div><div style="height:5px;margin-top:4px;border-radius:5px;background:rgba(255,255,255,.12)"><div style="height:100%;border-radius:5px;background:{{sc.c}};width:{{sc.v}}%"></div></div></div></for-each>
+</div></div>
+</a>
+<div style="padding:22px;border-radius:24px;background:#fff;border:1px solid #E7E5EE">
+<div style="font:700 18px 'Bricolage Grotesque',sans-serif">Top fans this month</div>
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:14px">
+<for-each list="{{fans}}" as="f"><div style="display:flex;align-items:center;gap:12px"><span style="width:26px;font:800 16px 'Bricolage Grotesque',sans-serif;color:#8B88A0">{{f.r}}</span><span style="width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:13px;background:{{f.c}};color:#14121F">{{f.i}}</span><span style="flex:1;font-weight:700;font-size:14px">{{f.n}}</span><span style="font-size:12px;font-weight:700;color:#5E5B70">{{f.x}} XP</span></div></for-each>
+</div>
+</div>
+<div style="padding:22px;border-radius:24px;background:#fff;border:1px solid #E7E5EE">
+<div style="font:700 18px 'Bricolage Grotesque',sans-serif">Badges</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px">
+<span class="stk" style="padding:10px 14px;border-radius:16px;background:#FFC93C;color:#2A2000;font-size:13px;font-weight:800;transform:rotate(-4deg)">Reader's Choice '26</span>
+<span class="stk" style="padding:10px 14px;border-radius:16px;background:#1FC8A0;color:#05332A;font-size:13px;font-weight:800;transform:rotate(3deg)">100-day streak</span>
+<span class="stk" style="padding:10px 14px;border-radius:16px;background:#FF7AC6;color:#3A0C2A;font-size:13px;font-weight:800;transform:rotate(-2deg)">Q&amp;A host</span>
+<span class="stk" style="padding:10px 14px;border-radius:16px;background:#EEECFF;color:#3B2DC9;font-size:13px;font-weight:800;transform:rotate(4deg)">Community builder</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</div>

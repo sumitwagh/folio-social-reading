@@ -1,0 +1,73 @@
+<div style="min-height:100vh;background:#F4F3F8;color:#14121F;font-family:'Plus Jakarta Sans',system-ui,sans-serif;display:flex;flex-wrap:wrap;align-items:flex-start">
+<div style="flex:1 1 248px;max-width:100%"><!--sidebar--></div>
+<main style="flex:999 1 560px;min-width:0;padding:28px 32px 64px">
+<div class="cols" style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+<div style="flex:999 1 520px;min-width:0;max-width:760px">
+<div style="display:flex;gap:14px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:none">
+<a href="#/" style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="width:68px;height:68px;border-radius:50%;border:2px dashed #5B4BFF;display:grid;place-items:center;color:#5B4BFF;font-size:28px;font-weight:700">+</span><span style="font-size:12px;font-weight:600">Your story</span></a>
+<for-each list="{{rings}}" as="r"><a href="#/" aria-label="Story from {{r.n}}" style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="width:68px;height:68px;border-radius:50%;padding:3px;background:conic-gradient(#5B4BFF,#FF7AC6,#FF6B4A,#FFC93C,#5B4BFF)"><span style="width:100%;height:100%;border-radius:50%;border:3px solid #F4F3F8;display:grid;place-items:center;font:800 19px 'Bricolage Grotesque',sans-serif;background:{{r.c}};color:{{r.i}}">{{r.a}}</span></span><span style="font-size:12px;font-weight:600">{{r.n}}</span></a></for-each>
+</div>
+
+<div style="border-radius:24px;background:#fff;border:1px solid #E7E5EE;padding:18px">
+<div style="display:flex;gap:12px;align-items:center"><span style="width:44px;height:44px;border-radius:14px;background:#8E83FF;color:#fff;display:grid;place-items:center;font:800 15px 'Bricolage Grotesque',sans-serif">AR</span>
+<label style="flex:1;position:relative;display:block;height:48px;border-radius:14px;background:#F7F6FB;overflow:hidden"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">What are you reading?</span>
+<span aria-hidden="true" style="position:absolute;inset:0;padding:0 16px;display:flex;align-items:center;white-space:pre;overflow:hidden;font:400 15px 'Plus Jakarta Sans',sans-serif;pointer-events:none"><span style="color:transparent">{{draft}}</span><span class="gh" style="color:#8B88A0">{{ghost}}</span></span>
+<input type="text" value="{{draft}}" onChange="{{onDraft}}" onKeyDown="{{onKey}}" placeholder="{{ph}}" aria-describedby="ghostHint" style="position:relative;width:100%;height:48px;padding:0 16px;border:0;background:transparent;font:400 15px 'Plus Jakarta Sans',sans-serif;outline:none;color:#14121F"></label></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center">
+<show-if value="{{hasGhost}}"><button type="button" class="press pop" onClick="{{accept}}" style="height:40px;padding:0 14px;border-radius:12px;border:0;background:#5B4BFF;color:#fff;font-size:13px;font-weight:700;cursor:pointer">✦ Accept suggestion <span style="opacity:.75;font-weight:600;margin-left:4px">Tab</span></button></show-if>
+<show-if value="{{noGhost}}"><button type="button" class="press" onClick="{{aiHelp}}" style="height:40px;padding:0 14px;border-radius:12px;border:0;background:#EEECFF;color:#3B2DC9;font-size:13px;font-weight:700;cursor:pointer">✦ Suggest a post</button></show-if>
+<span id="ghostHint" class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">{{ghostHint}}</span>
+<span style="height:40px;padding:0 14px;border-radius:12px;background:#F7F6FB;font-size:13px;font-weight:600;display:inline-flex;align-items:center;color:#5E5B70">+ Book</span>
+<span style="height:40px;padding:0 14px;border-radius:12px;background:#F7F6FB;font-size:13px;font-weight:600;display:inline-flex;align-items:center;color:#5E5B70">+ Poll</span>
+<button type="button" class="press" onClick="{{post}}" style="margin-left:auto;height:44px;padding:0 20px;border-radius:12px;border:0;background:#5B4BFF;color:#fff;font-weight:700;font-size:14px;cursor:pointer">Post</button>
+</div>
+</div>
+
+<div role="tablist" aria-label="Feed tabs" style="display:flex;gap:6px;margin-top:18px">
+<for-each list="{{tabs}}" as="t"><button type="button" role="tab" class="press" onClick="{{t.pick}}" style="height:42px;padding:0 16px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;{{t.style}}">{{t.label}}</button></for-each>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:16px;margin-top:16px">
+<for-each list="{{posts}}" as="p">
+<article class="rise" style="border-radius:26px;background:#fff;border:1px solid #E7E5EE;padding:20px;animation-delay:{{p.d}}">
+<div style="display:flex;align-items:center;gap:12px"><a href="#/author" style="width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font:800 15px 'Bricolage Grotesque',sans-serif;background:{{p.color}};color:{{p.ink}}">{{p.initials}}</a><div style="flex:1;min-width:0"><div style="font-size:15px"><b>{{p.name}}</b> <span style="color:#5E5B70">{{p.action}}</span></div><div style="font-size:12px;color:#5E5B70;margin-top:2px">{{p.meta}}</div></div><span style="padding:5px 10px;border-radius:999px;font-size:11px;font-weight:800;background:{{p.kindBg}};color:{{p.kindInk}}">{{p.kind}}</span></div>
+
+<show-if value="{{p.isStory}}"><a href="#/book" style="display:block;margin-top:14px;padding:26px;border-radius:20px;background:{{p.cardBg}};color:{{p.cardInk}}"><p style="margin:0;font:800 24px/1.2 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em">“{{p.text}}”</p><div style="margin-top:14px;font-size:13px;font-weight:700;opacity:.85">Continues in {{p.book}} →</div></a></show-if>
+<show-if value="{{p.isText}}"><div style="display:flex;gap:16px;margin-top:14px;align-items:flex-start"><show-if value="{{p.hasCover}}"><a href="#/book" aria-label="Open book" style="flex:0 0 auto;width:64px;height:96px;border-radius:10px;background:{{p.cover}};box-shadow:0 10px 18px -8px rgba(0,0,0,.35)"></a></show-if><div style="flex:1"><p style="margin:0;font-size:16px;line-height:1.6">{{p.text}}</p><show-if value="{{p.hasProg}}"><div style="margin-top:12px;height:8px;border-radius:8px;background:#F0EEF5"><div style="height:100%;border-radius:8px;background:#1FC8A0;width:{{p.prog}}%"></div></div><div style="margin-top:6px;font-size:12px;font-weight:700;color:#0B6B53">{{p.prog}}% · {{p.progNote}}</div></show-if></div></div></show-if>
+<show-if value="{{p.isPoll}}"><div style="margin-top:14px"><p style="margin:0 0 12px;font:700 18px 'Bricolage Grotesque',sans-serif">{{p.text}}</p><div style="display:flex;flex-direction:column;gap:8px"><for-each list="{{p.opts}}" as="o"><button type="button" class="press" onClick="{{o.pick}}" style="position:relative;overflow:hidden;width:100%;height:48px;border-radius:14px;cursor:pointer;text-align:left;padding:0 16px;font-size:14px;font-weight:700;color:#14121F;{{o.border}}"><span class="bar" style="position:absolute;left:0;top:0;bottom:0;background:{{o.fill}};width:{{o.w}}%"></span><span style="position:relative;display:flex;justify-content:space-between"><span>{{o.label}}</span><span>{{o.pct}}</span></span></button></for-each></div><div style="margin-top:8px;font-size:12px;color:#5E5B70">{{p.votesLabel}}</div></div></show-if>
+<show-if value="{{p.isMilestone}}"><div class="conf" style="position:relative;margin-top:14px;padding:26px;border-radius:20px;background:#FFC93C;overflow:hidden;text-align:center"><span style="left:10%;top:20%;background:#5B4BFF"></span><span style="left:80%;top:30%;background:#FF6B4A;animation-delay:-.4s"></span><span style="left:30%;top:70%;background:#1FC8A0;animation-delay:-.8s"></span><span style="left:65%;top:72%;background:#FF7AC6;animation-delay:-1.2s"></span><div style="font:800 28px 'Bricolage Grotesque',sans-serif;color:#2A2000">{{p.text}}</div><div style="margin-top:6px;font-size:14px;font-weight:700;color:#3D2E00">{{p.sub}}</div></div></show-if>
+<show-if value="{{p.isAi}}"><div style="margin-top:14px;padding:18px;border-radius:20px;background:#EEECFF"><p style="margin:0;font-size:15px;line-height:1.55;color:#1F1A55">{{p.text}}</p><div style="display:flex;gap:8px;margin-top:12px"><a href="#/discover" class="press" style="height:40px;padding:0 14px;border-radius:12px;background:#5B4BFF;color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center">Show me</a><button type="button" class="press" onClick="{{p.hide}}" style="height:40px;padding:0 14px;border-radius:12px;border:1px solid #CFC9FF;background:transparent;color:#3B2DC9;font-size:13px;font-weight:700;cursor:pointer">Not now</button></div></div></show-if>
+
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center">
+<for-each list="{{p.reacts}}" as="r"><button type="button" class="press" onClick="{{r.pick}}" style="height:38px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;{{r.style}}">{{r.label}} {{r.n}}</button></for-each>
+<button type="button" class="press" onClick="{{p.toggleCom}}" style="margin-left:auto;height:38px;padding:0 12px;border-radius:999px;border:0;background:transparent;font-size:13px;font-weight:700;color:#5E5B70;cursor:pointer">{{p.comLabel}}</button>
+</div>
+<show-if value="{{p.comOpen}}"><div class="rise" style="margin-top:10px;padding:14px;border-radius:18px;background:#F7F6FB;display:flex;flex-direction:column;gap:10px"><for-each list="{{p.comments}}" as="c"><div style="font-size:14px;line-height:1.5"><b>{{c.n}}</b> {{c.t}}</div></for-each></div></show-if>
+</article>
+</for-each>
+</div>
+</div>
+
+<aside style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:16px">
+<div style="border-radius:24px;background:#14121F;color:#fff;padding:22px">
+<div style="font:700 18px 'Bricolage Grotesque',sans-serif">Live rooms</div>
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:14px">
+<a href="#/" style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;background:rgba(255,255,255,.08)"><span class="pulse" style="width:10px;height:10px;border-radius:50%;background:#FF6B4A"></span><span style="flex:1;font-size:14px;font-weight:700">Dev Raman Q&amp;A<br><span style="font-weight:500;color:#C9C6D8;font-size:12px">1,940 listening</span></span></a>
+<a href="#/community" style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;background:rgba(255,255,255,.08)"><span class="pulse" style="width:10px;height:10px;border-radius:50%;background:#FF6B4A"></span><span style="flex:1;font-size:14px;font-weight:700">Cartographer ch. 9 room<br><span style="font-weight:500;color:#C9C6D8;font-size:12px">86 reading together</span></span></a>
+</div>
+</div>
+<a href="#/leaderboard" style="display:block;border-radius:24px;background:#fff;border:1px solid #E7E5EE;padding:22px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 18px 'Bricolage Grotesque',sans-serif">Your week</span><span style="font-size:12px;font-weight:800;color:#C2410C">23-day streak</span></div>
+<div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:14px"><for-each list="{{week}}" as="w"><div style="text-align:center"><div style="height:40px;border-radius:12px;{{w.s}}"></div><div style="margin-top:4px;font-size:11px;font-weight:700;color:#5E5B70">{{w.l}}</div></div></for-each></div>
+<div style="margin-top:12px;font-size:13px;color:#5E5B70">+340 XP this week · 160 XP to Level 8</div>
+</a>
+<div style="border-radius:24px;background:#fff;border:1px solid #E7E5EE;padding:22px">
+<div style="font:700 18px 'Bricolage Grotesque',sans-serif">Readers like you</div>
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:14px">
+<for-each list="{{people}}" as="u"><div style="display:flex;align-items:center;gap:10px"><span style="width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:13px;background:{{u.c}};color:#14121F">{{u.i}}</span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:14px">{{u.n}}</div><div style="font-size:12px;color:#5E5B70">{{u.w}}</div></div><button type="button" class="press" onClick="{{u.pick}}" style="height:36px;padding:0 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;{{u.style}}">{{u.label}}</button></div></for-each>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</div>

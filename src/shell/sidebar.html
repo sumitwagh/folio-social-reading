@@ -1,0 +1,28 @@
+<aside class="sidebar" style="box-sizing:border-box;width:100%;padding:24px 16px 24px 20px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#14121F;display:flex;flex-direction:column;gap:22px">
+<a href="#/" aria-label="Folio home" style="display:flex;align-items:center;gap:10px;padding:4px 8px;text-decoration:none;color:#14121F">
+<span style="width:40px;height:40px;border-radius:14px;background:#5B4BFF;display:grid;place-items:center;transform:rotate(-6deg)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5c3 0 6 1 8 3v12c-2-2-5-3-8-3z" fill="#FFC93C"/><path d="M20 5c-3 0-6 1-8 3v12c2-2 5-3 8-3z" fill="#fff"/></svg></span>
+<span style="font:800 26px 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em">folio</span>
+</a>
+<nav class="sidebar-nav" aria-label="Main" style="display:flex;flex-direction:column;gap:4px">
+<for-each list="{{nav.links}}" as="l">
+<a href="{{l.href}}" aria-current="{{l.current}}" style="display:flex;align-items:center;gap:12px;height:48px;padding:0 14px;border-radius:14px;font-size:15px;font-weight:600;text-decoration:none;transition:background .25s,color .25s;{{l.style}}">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path data-svg-d="{{l.d}}"/></svg>
+<span style="flex:1">{{l.label}}</span>
+<show-if value="{{l.hasBadge}}"><span style="min-width:24px;height:24px;padding:0 7px;border-radius:999px;display:grid;place-items:center;font-size:12px;font-weight:800;{{l.badgeStyle}}">{{l.badge}}</span></show-if>
+</a>
+</for-each>
+</nav>
+<div style="padding:18px;border-radius:20px;background:#14121F;color:#fff">
+<div style="font-size:12px;font-weight:800;letter-spacing:.08em;color:#FFC93C">CURRENTLY READING</div>
+<a href="#/book" style="display:flex;gap:12px;align-items:center;margin-top:12px;text-decoration:none;color:#fff">
+<span style="flex:0 0 auto;width:40px;height:58px;border-radius:7px;background:#FFC93C;position:relative;overflow:hidden"><span style="position:absolute;width:28px;height:28px;border-radius:50%;right:-8px;top:-8px;background:#14121F"></span></span>
+<span style="font-weight:700;font-size:14px;line-height:1.3">The Cartographer of Silence</span>
+</a>
+<div style="height:6px;margin-top:12px;border-radius:6px;background:rgba(255,255,255,.16)"><div style="width:64%;height:100%;border-radius:6px;background:#1FC8A0"></div></div>
+<div style="margin-top:8px;font-size:12px;color:#C9C6D8">64% · 212 readers on this chapter</div>
+</div>
+<a href="#/feed" style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:16px;background:#fff;border:1px solid #E7E5EE;text-decoration:none;color:#14121F">
+<span style="width:42px;height:42px;border-radius:14px;background:#8E83FF;color:#fff;display:grid;place-items:center;font:800 15px 'Bricolage Grotesque',sans-serif">AR</span>
+<span style="flex:1;min-width:0"><span style="display:block;font-weight:700;font-size:14px">Aanya Rao</span><span style="display:block;font-size:12px;color:#5E5B70">Level 7 reader</span></span>
+</a>
+</aside>

@@ -1,0 +1,135 @@
+<div style="min-height:100vh;background:#F4F3F8;color:#14121F;font-family:'Plus Jakarta Sans',system-ui,sans-serif;display:flex;flex-wrap:wrap;align-items:flex-start">
+<div style="flex:1 1 248px;max-width:100%"><!--sidebar--></div>
+<main style="flex:999 1 560px;min-width:0;padding:24px 32px 64px">
+
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+<label style="flex:1 1 320px;display:flex;align-items:center;gap:10px;height:52px;padding:0 18px;border-radius:16px;background:#fff;border:1px solid #E7E5EE;color:#5E5B70"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search</span><input type="search" placeholder="Search books, authors, rooms or vibes…" style="flex:1;border:0;outline:none;background:transparent;font-size:15px;color:#14121F"></label>
+<span style="display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 16px;border-radius:16px;background:#fff;border:1px solid #E7E5EE;font-size:14px;font-weight:600"><span class="pulse" style="width:9px;height:9px;border-radius:50%;background:#FF6B4A"></span><span class="sr">12,480</span><span class="cnt" aria-hidden="true" style="--tk:12;--tr:480;font-variant-numeric:tabular-nums"></span>&nbsp;reading now</span>
+<span style="position:relative">
+<button type="button" class="press" onClick="{{toggleNotif}}" aria-expanded="{{notifExp}}" aria-label="Notifications, 4 new" style="position:relative;width:52px;height:52px;border-radius:16px;cursor:pointer;display:grid;place-items:center;{{notifStyle}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 8a6 6 0 1112 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 004 0"/></svg><show-if value="{{hasUnread}}"><span style="position:absolute;top:10px;right:11px;width:9px;height:9px;border-radius:50%;background:#FF6B4A;border:2px solid #fff"></span></show-if></button>
+<show-if value="{{notifOpen}}">
+<div role="region" aria-label="Notifications" style="position:absolute;right:0;top:62px;z-index:30;width:360px;display:flex;flex-direction:column;gap:8px">
+<for-each list="{{notifs}}" as="n">
+<a href="{{n.href}}" class="drop" style="display:flex;gap:12px;align-items:center;padding:14px;border-radius:18px;background:#fff;border:1px solid #E7E5EE;box-shadow:0 18px 40px -20px rgba(40,30,90,.45);animation-delay:{{n.d}}">
+<span style="flex:0 0 auto;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font:800 14px 'Bricolage Grotesque',sans-serif;background:{{n.bg}};color:{{n.ink}}">{{n.i}}</span>
+<span style="flex:1;min-width:0;font-size:13px;line-height:1.4;color:#14121F"><b>{{n.who}}</b> {{n.what}}<span style="display:block;font-size:12px;color:#5E5B70;margin-top:2px">{{n.when}}</span></span>
+</a>
+</for-each>
+</div>
+</show-if>
+</span>
+<a href="#/feed" class="press" style="height:52px;padding:0 22px;border-radius:16px;background:#5B4BFF;color:#fff;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px">+ Share</a>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:32px">
+<div><h1 style="margin:0;font:800 clamp(34px,3.6vw,48px)/1.02 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Hey Aanya, your people<br>posted <span style="background:#FFC93C;padding:0 10px;border-radius:12px"><span class="sr">26</span><span class="cnt cnt1" aria-hidden="true" style="--tk:0;--tr:26;font-variant-numeric:tabular-nums"></span> new stories</span></h1></div>
+<div style="display:flex;gap:10px">
+<span style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:999px;background:#FFE8E2;color:#9A2E16;font-weight:700;font-size:14px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF6B4A" aria-hidden="true"><path d="M12 2c1 4 5 6 5 11a5 5 0 01-10 0c0-3 2-4 2-7 2 1 3 3 3 5 1-2 1-5 0-9z"/></svg>23-day streak</span>
+<span style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:999px;background:#EEECFF;color:#3B2DC9;font-weight:700;font-size:14px">Level 7 · 2,340 XP</span>
+</div>
+</div>
+
+<div style="display:flex;gap:18px;overflow-x:auto;padding:24px 4px 8px;scrollbar-width:none">
+<for-each list="{{stories}}" as="s">
+<button type="button" class="ring" onClick="{{s.open}}" aria-label="Open story from {{s.name}}" style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;border:0;background:transparent;cursor:pointer;color:#14121F">
+<span style="width:84px;height:84px;border-radius:50%;padding:3px;{{s.ring}}"><span style="width:100%;height:100%;border-radius:50%;border:3px solid #F4F3F8;display:grid;place-items:center;font:800 24px 'Bricolage Grotesque',sans-serif;background:{{s.color}};color:{{s.ink}}">{{s.initials}}</span></span>
+<span style="font-size:13px;font-weight:600">{{s.short}}</span>
+</button>
+</for-each>
+</div>
+
+<div class="bento" style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;margin-top:20px">
+<a href="#/book" class="lift" style="grid-column:span 7;min-width:0;position:relative;overflow:hidden;border-radius:28px;background:#5B4BFF;color:#fff;padding:32px;min-height:340px;display:flex;flex-wrap:wrap;gap:24px">
+<div style="flex:1 1 260px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;position:relative;z-index:2">
+<div><span style="display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.18);font-size:12px;font-weight:700;letter-spacing:.06em">BOOK OF THE WEEK</span>
+<div style="margin-top:16px;font:800 40px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">The Cartographer of Silence</div>
+<div style="margin-top:8px;font-size:15px;opacity:.9">Mira Okafor · literary sci-fi</div></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;font-size:13px;font-weight:600"><span style="padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.16)">★ 4.8</span><span style="padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.16)">18.2k reading</span><span style="padding:8px 12px;border-radius:12px;background:#FFC93C;color:#14121F">412 discussing now</span></div>
+</div>
+<div aria-hidden="true" style="flex:1 1 220px;position:relative;min-height:240px">
+<div class="bob" style="--r:-10deg;position:absolute;left:4%;top:24%;width:120px;height:180px;border-radius:12px;background:#FF7AC6;box-shadow:0 20px 40px -12px rgba(0,0,0,.4);animation-delay:-1s"><div style="position:absolute;inset:0;padding:14px;font:800 16px/1 'Bricolage Grotesque',sans-serif;color:#3A0C2A">The Weight of Light</div></div>
+<div class="bob" style="--r:9deg;position:absolute;right:2%;top:14%;width:120px;height:180px;border-radius:12px;background:#1FC8A0;box-shadow:0 20px 40px -12px rgba(0,0,0,.4);animation-delay:-2.5s"><div style="position:absolute;inset:0;padding:14px;font:800 16px/1 'Bricolage Grotesque',sans-serif;color:#05332A">Salt &amp; Static</div></div>
+<div class="bob" style="--r:-2deg;position:absolute;left:26%;top:2%;width:150px;height:225px;border-radius:14px;background:#14121F;box-shadow:0 30px 50px -14px rgba(0,0,0,.55);overflow:hidden;z-index:2"><div style="position:absolute;width:90px;height:90px;border-radius:50%;right:-20px;top:-20px;background:#FFC93C"></div><div style="position:absolute;inset:0;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;font:800 21px/1 'Bricolage Grotesque',sans-serif;color:#fff">The Cartographer of Silence</div></div>
+</div>
+</a>
+
+<div style="grid-column:span 5;min-width:0;border-radius:28px;background:#14121F;color:#fff;padding:28px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#FF6B4A;color:#14121F;font-size:12px;font-weight:800;letter-spacing:.08em"><span class="pulse" style="width:8px;height:8px;border-radius:50%;background:#14121F"></span>LIVE ROOM</span><span class="eq" aria-hidden="true" style="display:flex;align-items:flex-end;gap:3px;height:24px"><span style="animation-delay:-.2s"></span><span style="animation-delay:-.5s"></span><span style="animation-delay:-.8s"></span><span style="animation-delay:-.1s"></span><span style="animation-delay:-.6s"></span></span></div>
+<div style="font:700 26px/1.15 'Bricolage Grotesque',sans-serif">Dev Raman answers your Salt &amp; Static theories</div>
+<div style="display:flex;align-items:center;gap:12px"><div style="display:flex"><span style="width:34px;height:34px;border-radius:50%;background:#FFC93C;border:2px solid #14121F"></span><span style="width:34px;height:34px;border-radius:50%;background:#1FC8A0;border:2px solid #14121F;margin-left:-10px"></span><span style="width:34px;height:34px;border-radius:50%;background:#FF7AC6;border:2px solid #14121F;margin-left:-10px"></span><span style="width:34px;height:34px;border-radius:50%;background:#8E83FF;border:2px solid #14121F;margin-left:-10px"></span></div><span style="font-size:14px;color:#C9C6D8">{{roomCount}} in the room · Kabir is speaking</span></div>
+<button type="button" class="press" onClick="{{toggleRoom}}" style="margin-top:auto;height:52px;border-radius:16px;border:0;font-weight:700;font-size:15px;cursor:pointer;{{roomStyle}}">{{roomLabel}}</button>
+</div>
+
+<div style="grid-column:span 5;min-width:0;border-radius:28px;background:#fff;border:1px solid #E7E5EE;padding:26px">
+<div style="display:flex;align-items:center;gap:10px"><span style="width:34px;height:34px;border-radius:12px;background:#EEECFF;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B4BFF" stroke-width="2" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9.7l-4.2 3.2 1.4 5.1L12 15.2 7.8 18l1.4-5.1L5 9.7l5.2-1.8z"/></svg></span><div style="font:700 19px 'Bricolage Grotesque',sans-serif">Picked for your vibe</div></div>
+<div role="group" aria-label="Vibe" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
+<for-each list="{{moods}}" as="m"><button type="button" class="press" onClick="{{m.pick}}" style="height:40px;padding:0 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;{{m.style}}">{{m.label}}</button></for-each>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
+<for-each list="{{picks}}" as="p">
+<a href="#/book" class="pop lift" style="display:flex;align-items:center;gap:14px;padding:10px;border-radius:18px;background:#F7F6FB;animation-delay:{{p.d}}">
+<span style="flex:0 0 auto;width:48px;height:70px;border-radius:8px;background:{{p.bg}}"></span>
+<span style="flex:1;min-width:0"><span style="display:block;font-weight:700;font-size:15px">{{p.title}}</span><span style="display:block;margin-top:3px;font-size:13px;color:#5E5B70;line-height:1.4">{{p.why}}</span></span>
+<span style="flex:0 0 auto;padding:6px 10px;border-radius:10px;background:#E3FBF4;color:#0B6B53;font-size:12px;font-weight:800">{{p.match}}%</span>
+</a>
+</for-each>
+</div>
+</div>
+
+<div style="grid-column:span 7;min-width:0;border-radius:28px;background:#fff;border:1px solid #E7E5EE;padding:26px">
+<div style="display:flex;justify-content:space-between;align-items:center"><div style="font:700 19px 'Bricolage Grotesque',sans-serif">Hot in the community</div><a href="#/community" style="font-size:14px;font-weight:600;color:#5B4BFF">See all</a></div>
+<div style="display:flex;flex-direction:column;margin-top:10px">
+<for-each list="{{threads}}" as="t">
+<div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #F0EEF5">
+<button type="button" class="press" onClick="{{t.vote}}" aria-label="Upvote" aria-pressed="{{t.on}}" style="position:relative;flex:0 0 auto;width:56px;height:56px;border-radius:16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:14px;transition:background .3s,color .3s,transform .5s var(--spring);{{t.voteStyle}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4l8 10H4z"/></svg>{{t.votes}}<show-if value="{{t.burst}}"><span class="burst" aria-hidden="true"><i style="--a:20deg;background:#5B4BFF"></i><i style="--a:90deg;background:#FFC93C"></i><i style="--a:160deg;background:#1FC8A0"></i><i style="--a:230deg;background:#FF7AC6"></i><i style="--a:300deg;background:#FF6B4A"></i></span></show-if></button>
+<a href="#/community" style="flex:1;min-width:0"><span style="display:block;font-weight:700;font-size:15px;line-height:1.35">{{t.title}}</span><span style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;font-size:13px;color:#5E5B70"><span style="color:{{t.tagColor}};font-weight:700">{{t.tag}}</span><span>{{t.meta}}</span></span></a>
+<span style="flex:0 0 auto;font-size:12px;font-weight:700;color:#0B6B53;background:#E3FBF4;padding:6px 10px;border-radius:999px">{{t.typing}}</span>
+</div>
+</for-each>
+</div>
+</div>
+
+<div style="grid-column:span 4;min-width:0;border-radius:28px;background:#fff;border:1px solid #E7E5EE;padding:26px">
+<div style="display:flex;justify-content:space-between;align-items:center"><div style="font:700 19px 'Bricolage Grotesque',sans-serif">Rising authors</div><a href="#/leaderboard" style="font-size:14px;font-weight:600;color:#5B4BFF">Ranks</a></div>
+<div style="display:flex;flex-direction:column;gap:14px;margin-top:16px">
+<for-each list="{{authors}}" as="a">
+<div style="display:flex;align-items:center;gap:12px"><a href="#/author" style="width:46px;height:46px;border-radius:16px;display:grid;place-items:center;font:800 16px 'Bricolage Grotesque',sans-serif;background:{{a.color}};color:{{a.ink}}">{{a.initials}}</a><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:15px">{{a.name}}</div><div style="font-size:12px;color:#5E5B70">Influence {{a.score}} · {{a.genre}}</div></div><button type="button" class="press" onClick="{{a.pick}}" style="height:38px;padding:0 14px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;{{a.style}}">{{a.label}}</button></div>
+</for-each>
+</div>
+</div>
+
+<a href="#/leaderboard" class="lift" style="grid-column:span 4;min-width:0;border-radius:28px;background:#FFC93C;padding:26px;display:flex;flex-direction:column;gap:14px">
+<div style="font-size:12px;font-weight:800;letter-spacing:.08em;color:#5C4300">READING CHALLENGE · WEEK 3</div>
+<div style="display:flex;align-items:center;gap:18px"><svg width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="4 of 12 books read"><circle cx="48" cy="48" r="40" fill="none" stroke="rgba(20,18,31,.15)" stroke-width="10"/><circle cx="48" cy="48" r="40" fill="none" stroke="#14121F" stroke-width="10" stroke-linecap="round" stroke-dasharray="84 251" transform="rotate(-90 48 48)"/><text x="48" y="55" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="22" fill="#14121F">4/12</text></svg><div style="font:800 24px/1.05 'Bricolage Grotesque',sans-serif">#12BooksAway</div></div>
+<div style="font-size:14px;font-weight:600;color:#3D2E00">You're #318 of 3,402. Finish one more book this week to jump 60 spots.</div>
+</a>
+
+<a href="#/feed" class="lift" style="grid-column:span 4;min-width:0;border-radius:28px;background:#1FC8A0;padding:26px;display:flex;flex-direction:column;gap:12px;color:#05332A">
+<div style="font-size:12px;font-weight:800;letter-spacing:.08em">FROM STORY TO BOOK</div>
+<div style="font:800 24px/1.1 'Bricolage Grotesque',sans-serif">Dev's #SaltDiaries Day 42 just became chapter 4 of Salt &amp; Static</div>
+<div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700"><span style="padding:6px 10px;border-radius:999px;background:#05332A;color:#E3FBF4">Story</span>→<span style="padding:6px 10px;border-radius:999px;background:#05332A;color:#E3FBF4">Chapter</span>→<span style="padding:6px 10px;border-radius:999px;border:2px dashed #05332A">Book</span></div>
+</a>
+</div>
+
+<div style="margin-top:28px;border-radius:28px;background:#fff;border:1px solid #E7E5EE;padding:24px 0;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:0 26px"><div style="font:700 19px 'Bricolage Grotesque',sans-serif">Trending shelves</div><a href="#/discover" style="font-size:14px;font-weight:600;color:#5B4BFF">Discover more</a></div>
+<div style="margin-top:18px"><div class="mq">
+<for-each list="{{shelves}}" as="c"><a href="#/discover" class="lift" style="flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:18px;background:{{c.bg}};color:{{c.ink}}"><span style="display:flex"><span style="width:30px;height:44px;border-radius:5px;background:{{c.a}};transform:rotate(-8deg)"></span><span style="width:30px;height:44px;border-radius:5px;background:{{c.b}};margin-left:-10px;transform:rotate(6deg)"></span></span><span><span style="display:block;font-weight:800;font-size:15px">{{c.title}}</span><span style="display:block;font-size:12px;font-weight:600;opacity:.8">{{c.meta}}</span></span></a></for-each>
+</div></div>
+</div>
+</main>
+
+<show-if value="{{storyOpen}}">
+<div role="dialog" aria-modal="true" aria-label="Story from {{cur.name}}" style="position:fixed;inset:0;z-index:50;background:rgba(20,18,31,.78);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;gap:20px;padding:24px">
+<button type="button" onClick="{{prevStory}}" aria-label="Previous story" style="width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<div class="pop" style="position:relative;width:min(92vw,390px);height:min(86vh,680px);border-radius:30px;overflow:hidden;background:{{cur.color}};color:{{cur.ink}};display:flex;flex-direction:column;padding:18px 22px 22px;box-shadow:0 40px 80px -20px #000">
+<div style="display:flex;gap:4px"><for-each list="{{segs}}" as="g"><span style="flex:1;height:4px;border-radius:4px;background:rgba(0,0,0,.18);overflow:hidden"><span style="display:block;height:100%;background:{{cur.ink}};{{g.style}}"></span></span></for-each></div>
+<div style="display:flex;align-items:center;gap:10px;margin-top:16px"><span style="width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:{{cur.ink}};color:{{cur.color}};font:800 15px 'Bricolage Grotesque',sans-serif">{{cur.initials}}</span><div style="flex:1"><div style="font-weight:800;font-size:15px">{{cur.name}}</div><div style="font-size:12px;font-weight:600;opacity:.8">{{cur.tag}} · {{cur.when}}</div></div><button type="button" onClick="{{close}}" aria-label="Close story" style="width:44px;height:44px;border-radius:50%;border:0;background:rgba(0,0,0,.12);color:{{cur.ink}};cursor:pointer;font-size:20px">×</button></div>
+<div style="flex:1;display:flex;align-items:center"><p style="margin:0;font:800 32px/1.12 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em">“{{cur.text}}”</p></div>
+<a href="#/book" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-radius:18px;background:rgba(0,0,0,.14);font-weight:700;font-size:14px"><span><span style="display:block;font-size:11px;letter-spacing:.08em;opacity:.8">THIS STORY CONTINUES IN</span>{{cur.book}}</span><span aria-hidden="true">→</span></a>
+<div style="display:flex;gap:10px;margin-top:12px"><label style="flex:1"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Reply to story</span><input type="text" placeholder="Reply to {{cur.short}}…" style="width:100%;height:48px;padding:0 16px;border-radius:999px;border:2px solid {{cur.ink}};background:transparent;color:{{cur.ink}};font-size:14px;outline:none"></label><button type="button" class="press" onClick="{{like}}" aria-label="Like story" aria-pressed="{{likedOn}}" style="position:relative;width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;{{likeStyle}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 5.7-8 11-8 11z"/></svg><show-if value="{{likedNow}}"><span class="burst" aria-hidden="true"><i style="--a:0deg;background:#FFC93C"></i><i style="--a:60deg;background:#1FC8A0"></i><i style="--a:120deg;background:#FF7AC6"></i><i style="--a:180deg;background:#FFC93C"></i><i style="--a:240deg;background:#8E83FF"></i><i style="--a:300deg;background:#FF6B4A"></i></span></show-if></button></div>
+</div>
+<button type="button" onClick="{{nextStory}}" aria-label="Next story" style="width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
+</show-if>
+</div>

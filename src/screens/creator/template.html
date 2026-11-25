@@ -1,0 +1,70 @@
+<div style="min-height:100vh;background:#F4F3F8;color:#14121F;font-family:'Plus Jakarta Sans',system-ui,sans-serif;display:flex;flex-wrap:wrap;align-items:flex-start">
+<div style="flex:1 1 248px;max-width:100%"><!--sidebar--></div>
+<main style="flex:999 1 560px;min-width:0;padding:28px 32px 64px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px">
+<div><div style="font-size:13px;font-weight:700;color:#5E5B70">Creator hub · Mira Okafor</div><h1 style="margin:6px 0 0;font:800 clamp(32px,3.4vw,44px)/1.05 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Your readers are <span style="background:#1FC8A0;padding:0 10px;border-radius:12px">on fire</span> this week</h1></div>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<div role="group" aria-label="Range" style="display:flex;gap:4px;padding:5px;border-radius:16px;background:#fff;border:1px solid #E7E5EE"><for-each list="{{ranges}}" as="r"><button type="button" onClick="{{r.pick}}" style="height:40px;padding:0 14px;border-radius:12px;border:0;font-size:13px;font-weight:700;cursor:pointer;{{r.style}}">{{r.label}}</button></for-each></div>
+<a href="#/studio" class="press" style="height:50px;padding:0 20px;border-radius:16px;background:#5B4BFF;color:#fff;font-weight:700;font-size:14px;display:inline-flex;align-items:center">✦ Create with AI</a>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:24px">
+<for-each list="{{kpis}}" as="k">
+<div class="lift" style="border-radius:24px;padding:20px;background:{{k.bg}};color:{{k.ink}}">
+<div style="font-size:13px;font-weight:700;opacity:.8">{{k.label}}</div>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:8px"><span style="overflow:hidden;display:inline-block"><span class="roll" style="font:800 36px/1 'Bricolage Grotesque',sans-serif;animation-name:{{k.an}};animation-delay:{{k.d}}">{{k.value}}</span></span><span style="padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.12);font-size:12px;font-weight:800">↑ {{k.delta}}</span></div>
+<svg viewBox="0 0 160 40" aria-hidden="true" style="width:100%;height:40px;margin-top:10px;overflow:visible"><polyline class="sp" pathLength="1" style="animation-name:{{k.sa}};animation-delay:{{k.d}}" data-svg-points="{{k.spark}}" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+</for-each>
+</div>
+
+<div class="cols" style="display:flex;flex-wrap:wrap;gap:20px;margin-top:20px;align-items:flex-start">
+<div style="flex:2 1 520px;min-width:0;border-radius:28px;background:#fff;border:1px solid #E7E5EE;padding:24px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center"><div style="font:700 19px 'Bricolage Grotesque',sans-serif">New followers</div><div style="display:flex;gap:14px;font-size:12px;font-weight:700;color:#5E5B70"><span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:4px;background:#5B4BFF"></span>From stories</span><span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:4px;background:#FFC93C"></span>From books</span></div></div>
+<div role="img" aria-label="{{chartLabel}}" style="display:flex;align-items:flex-end;gap:10px;height:220px;margin-top:22px;padding-bottom:4px;border-bottom:1px solid #E7E5EE">
+<for-each list="{{bars}}" as="b">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end">
+<span style="font-size:11px;font-weight:800;color:#5E5B70">{{b.total}}</span>
+<div class="grow" style="width:100%;max-width:42px;display:flex;flex-direction:column;border-radius:10px;overflow:hidden;animation-delay:{{b.d}}"><div class="bar" style="background:#FFC93C;height:{{b.h2}}px"></div><div class="bar" style="background:#5B4BFF;height:{{b.h1}}px"></div></div>
+</div>
+</for-each>
+</div>
+<div style="display:flex;gap:10px;margin-top:8px"><for-each list="{{bars}}" as="b"><span style="flex:1;text-align:center;font-size:11px;font-weight:700;color:#5E5B70">{{b.l}}</span></for-each></div>
+</div>
+<div style="flex:1 1 300px;min-width:0;border-radius:28px;background:#fff;border:1px solid #E7E5EE;padding:24px">
+<div style="font:700 19px 'Bricolage Grotesque',sans-serif">Top stories</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+<for-each list="{{top}}" as="t"><a href="#/feed" class="lift" style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:16px;background:#F7F6FB"><span style="width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font:800 14px 'Bricolage Grotesque',sans-serif;background:{{t.bg}};color:{{t.ink}}">{{t.n}}</span><span style="flex:1;min-width:0"><span style="display:block;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{t.title}}</span><span style="display:block;font-size:12px;color:#5E5B70">{{t.meta}}</span></span></a></for-each>
+</div>
+</div>
+</div>
+
+<div style="margin-top:20px;border-radius:28px;background:#14121F;color:#fff;padding:26px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center"><div><div style="font-size:12px;font-weight:800;letter-spacing:.08em;color:#FFC93C">✦ YOUR READERS ARE ASKING FOR</div><div style="margin-top:6px;font:800 26px 'Bricolage Grotesque',sans-serif">3 posts that would land right now</div></div><span style="font-size:13px;color:#C9C6D8">From 1,840 comments this week</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px">
+<for-each list="{{ideas}}" as="i">
+<div class="lift" style="padding:20px;border-radius:22px;background:{{i.bg}};color:{{i.ink}};display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;font-size:12px;font-weight:800"><span>{{i.type}}</span><span style="opacity:.8">{{i.signal}}</span></div>
+<div style="font:800 21px/1.15 'Bricolage Grotesque',sans-serif">{{i.title}}</div>
+<div style="font-size:13px;line-height:1.5;font-weight:500;opacity:.9">{{i.why}}</div>
+<a href="#/studio" class="press" style="align-self:flex-start;margin-top:auto;height:40px;padding:0 14px;border-radius:12px;background:#14121F;color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center">Remix it →</a>
+</div>
+</for-each>
+</div>
+</div>
+
+<div style="margin-top:20px;border-radius:28px;background:#fff;border:1px solid #E7E5EE;padding:24px">
+<div style="display:flex;justify-content:space-between;align-items:center"><div style="font:700 19px 'Bricolage Grotesque',sans-serif">Your books</div><button type="button" class="press" style="height:42px;padding:0 16px;border-radius:12px;border:1px solid #E7E5EE;background:#fff;font-weight:700;font-size:13px;cursor:pointer;color:#14121F" onClick="{{toggleAdd}}" aria-expanded="{{addExp}}">{{addLabel}}</button></div>
+<show-if value="{{adding}}"><div class="pop" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;padding:14px;border-radius:18px;background:#F7F6FB"><label style="flex:1 1 240px;font-size:13px;font-weight:700">Working title<input type="text" value="{{newTitle}}" onChange="{{onNewTitle}}" placeholder="e.g. The Lantern Census, Book II" style="display:block;width:100%;height:46px;margin-top:6px;padding:0 14px;border-radius:12px;border:1px solid #E7E5EE;font:500 15px 'Plus Jakarta Sans',sans-serif"></label><button type="button" class="press" onClick="{{addBook}}" style="align-self:flex-end;height:46px;padding:0 18px;border-radius:12px;border:0;background:#5B4BFF;color:#fff;font-weight:700;cursor:pointer">Create draft</button><p aria-live="polite" style="flex-basis:100%;margin:0;font-size:13px;color:#9A2E16">{{addError}}</p></div></show-if>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:16px">
+<for-each list="{{books}}" as="b">
+<a href="{{b.href}}" class="lift" style="display:flex;gap:14px;align-items:center;padding:14px;border-radius:20px;background:#F7F6FB">
+<span style="flex:0 0 auto;width:54px;height:80px;border-radius:10px;background:{{b.bg}}"></span>
+<span style="flex:1;min-width:0"><span style="display:block;font-weight:700;font-size:15px">{{b.title}}</span><span style="display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:800;{{b.status}}">{{b.statusLabel}}</span><span style="display:block;margin-top:6px;font-size:12px;color:#5E5B70">{{b.meta}}</span></span>
+</a>
+</for-each>
+</div>
+</div>
+</main>
+</div>

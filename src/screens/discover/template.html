@@ -1,0 +1,74 @@
+<div style="min-height:100vh;background:#F4F3F8;color:#14121F;font-family:'Plus Jakarta Sans',system-ui,sans-serif;display:flex;flex-wrap:wrap;align-items:flex-start">
+<div style="flex:1 1 248px;max-width:100%"><!--sidebar--></div>
+<main style="flex:999 1 560px;min-width:0;padding:28px 32px 64px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px">
+<div><h1 style="margin:0;font:800 clamp(34px,3.6vw,48px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Discover your next <span style="background:#1FC8A0;padding:0 10px;border-radius:12px">obsession</span></h1>
+<p style="margin:10px 0 0;font-size:16px;color:#5E5B70">Swipe through picks your companion matched to you. Shelf the ones you love.</p></div>
+<div role="group" aria-label="Genres" style="display:flex;flex-wrap:wrap;gap:8px">
+<for-each list="{{cats}}" as="c"><button type="button" class="press" onClick="{{c.pick}}" style="height:42px;padding:0 16px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;{{c.style}}">{{c.label}}</button></for-each>
+</div>
+</div>
+
+<div class="cols" style="display:flex;flex-wrap:wrap;gap:24px;margin-top:28px;align-items:flex-start">
+<div style="flex:1.2 1 460px;min-width:0;border-radius:32px;background:#fff;border:1px solid #E7E5EE;padding:28px;display:flex;flex-direction:column;align-items:center">
+<div style="display:flex;justify-content:space-between;width:100%;font-size:13px;font-weight:700;color:#5E5B70"><span>Match {{pos}} of {{total}}</span><span style="color:#3B2DC9">{{saveCount}} shelved today</span></div>
+<div style="position:relative;width:min(100%,380px);height:520px;margin-top:18px">
+<show-if value="{{hasNext2}}"><div aria-hidden="true" style="position:absolute;inset:28px 26px -8px;border-radius:28px;background:{{next2.bg}};opacity:.45;transform:rotate(4deg)"></div></show-if>
+<show-if value="{{hasNext}}"><div aria-hidden="true" style="position:absolute;inset:14px 12px 4px;border-radius:28px;background:{{next.bg}};opacity:.75;transform:rotate(-3deg)"></div></show-if>
+<show-if value="{{hasCur}}">
+<article class="drag" onPointerDown="{{down}}" onPointerMove="{{move}}" onPointerUp="{{up}}" onPointerCancel="{{up}}" aria-roledescription="draggable card" style="position:absolute;inset:0;border-radius:28px;background:{{cur.bg}};color:{{cur.ink}};padding:26px;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(40,30,90,.45);animation:{{inAnim}} .5s cubic-bezier(.2,.9,.3,1.3) both">
+<span class="stamp" aria-hidden="true" style="left:24px;color:#0B6B53;background:#E3FBF4;transform:rotate(-12deg);opacity:var(--like,0)">SHELF IT</span>
+<span class="stamp" aria-hidden="true" style="right:24px;color:#9A2E16;background:#FFE8E2;transform:rotate(12deg);opacity:var(--nope,0)">SKIP</span>
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="padding:6px 12px;border-radius:999px;background:rgba(0,0,0,.14);font-size:12px;font-weight:800">{{cur.genre}}</span><span style="padding:6px 12px;border-radius:999px;background:{{cur.ink}};color:{{cur.bg}};font-size:13px;font-weight:800">{{cur.match}}% match</span></div>
+<div style="flex:1;display:flex;align-items:center;justify-content:center"><div style="width:170px;height:255px;border-radius:14px;position:relative;overflow:hidden;background:{{cur.cover}};box-shadow:0 26px 40px -16px rgba(0,0,0,.5);transform:rotate(-4deg)"><div style="position:absolute;background:{{cur.accent}};{{cur.shape}}"></div><div style="position:absolute;inset:0;padding:18px;display:flex;align-items:flex-end;font:800 22px/1 'Bricolage Grotesque',sans-serif;color:{{cur.coverInk}}">{{cur.title}}</div></div></div>
+<div style="font:800 28px/1.05 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em">{{cur.title}}</div>
+<div style="margin-top:4px;font-size:14px;font-weight:600;opacity:.85">{{cur.author}} · ★ {{cur.rating}}</div>
+<div style="margin-top:12px;padding:12px 14px;border-radius:16px;background:rgba(0,0,0,.12);font-size:14px;line-height:1.45;font-weight:500"><b>Why you:</b> {{cur.why}}</div>
+</article>
+</show-if>
+<show-if value="{{hasGhost}}"><div aria-hidden="true" style="position:absolute;inset:0;border-radius:28px;background:{{ghost.bg}};--gx:{{gx}}px;--gr:{{gr}}deg;animation:{{flyAnim}} .45s cubic-bezier(.4,0,1,1) forwards;pointer-events:none"></div></show-if>
+<show-if value="{{done}}"><div class="pop" style="position:absolute;inset:0;border-radius:28px;border:2px dashed #CFCBDD;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px"><div style="font:800 28px 'Bricolage Grotesque',sans-serif">That's everyone for today</div><p style="margin:10px 0 0;color:#5E5B70">Your companion will have new matches tomorrow morning.</p><button type="button" class="press" onClick="{{restart}}" style="margin-top:18px;height:48px;padding:0 20px;border-radius:14px;border:0;background:#14121F;color:#fff;font-weight:700;cursor:pointer">Start over</button></div></show-if>
+</div>
+<div style="display:flex;gap:16px;margin-top:26px;align-items:center">
+<button type="button" class="press" onClick="{{skip}}" aria-label="Skip this book" style="width:64px;height:64px;border-radius:50%;border:1px solid #E7E5EE;background:#fff;cursor:pointer;display:grid;place-items:center;color:#14121F"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<a href="#/book" style="height:52px;padding:0 22px;border-radius:999px;background:#F4F3F8;display:inline-flex;align-items:center;font-weight:700;font-size:14px">Read a sample</a>
+<button type="button" class="press" onClick="{{save}}" aria-label="Add to shelf" style="width:76px;height:76px;border-radius:50%;border:0;background:#FF6B4A;cursor:pointer;display:grid;place-items:center;color:#14121F;box-shadow:0 14px 30px -10px rgba(255,107,74,.8)"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 5.7-8 11-8 11z"/></svg></button>
+</div>
+<show-if value="{{hasSaved}}"><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px"><for-each list="{{saved}}" as="v"><span class="pop" style="padding:8px 12px;border-radius:999px;background:#EEECFF;color:#3B2DC9;font-size:13px;font-weight:700">+ {{v}}</span></for-each></div></show-if>
+</div>
+
+<div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:20px">
+<div style="border-radius:28px;background:#fff;border:1px solid #E7E5EE;padding:24px">
+<div style="font:700 19px 'Bricolage Grotesque',sans-serif">Trending right now</div>
+<div style="display:flex;flex-direction:column;gap:4px;margin-top:12px">
+<for-each list="{{trend}}" as="t"><a href="#/book" class="lift" style="display:flex;align-items:center;gap:14px;padding:10px;border-radius:16px"><span style="width:26px;font:800 20px 'Bricolage Grotesque',sans-serif;color:#8B88A0">{{t.rank}}</span><span style="width:40px;height:58px;border-radius:7px;background:{{t.bg}}"></span><span style="flex:1;min-width:0"><span style="display:block;font-weight:700;font-size:15px">{{t.title}}</span><span style="display:block;font-size:12px;color:#5E5B70">{{t.meta}}</span></span><span style="font-size:12px;font-weight:800;color:#0B6B53">↑ {{t.up}}</span></a></for-each>
+</div>
+</div>
+<div style="border-radius:28px;background:#14121F;color:#fff;padding:24px">
+<div style="font:700 19px 'Bricolage Grotesque',sans-serif">Your friends are reading</div>
+<div style="display:flex;flex-direction:column;gap:14px;margin-top:16px">
+<div style="display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:14px;background:#1FC8A0;color:#05332A;display:grid;place-items:center;font-weight:800">KS</span><div style="flex:1;font-size:14px;line-height:1.4"><b>Kabir</b> is 81% into <b>The Weight of Light</b></div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:14px;background:#FFC93C;color:#2A2000;display:grid;place-items:center;font-weight:800">LH</span><div style="flex:1;font-size:14px;line-height:1.4"><b>Leila</b> started a buddy read of <b>Salt &amp; Static</b></div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:14px;background:#FF7AC6;color:#3A0C2A;display:grid;place-items:center;font-weight:800">TR</span><div style="flex:1;font-size:14px;line-height:1.4"><b>Tomás</b> shelved <b>Kilometre Zero</b></div></div>
+</div>
+<a href="#/feed" class="press" style="display:flex;align-items:center;justify-content:center;height:48px;margin-top:18px;border-radius:14px;background:#fff;color:#14121F;font-weight:700;font-size:14px">Open the feed</a>
+</div>
+</div>
+</div>
+
+<div style="margin-top:36px;display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0;font:800 28px 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em">Collections everyone's saving</h2><span style="font-size:14px;color:#5E5B70">Hover to fan them open</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:18px">
+<for-each list="{{collections}}" as="c">
+<a href="#/book" class="fan lift" style="display:block;border-radius:28px;padding:24px;background:{{c.bg}};color:{{c.ink}}">
+<div style="position:relative;height:170px;display:flex;justify-content:center">
+<div class="f f1" style="position:absolute;bottom:0;left:calc(50% - 95px);width:84px;height:126px;border-radius:10px;background:{{c.a}};transform:rotate(-6deg);box-shadow:0 14px 24px -10px rgba(0,0,0,.4)"></div>
+<div class="f f3" style="position:absolute;bottom:0;left:calc(50% + 11px);width:84px;height:126px;border-radius:10px;background:{{c.b}};transform:rotate(6deg);box-shadow:0 14px 24px -10px rgba(0,0,0,.4)"></div>
+<div class="f f2" style="position:absolute;bottom:6px;left:calc(50% - 46px);width:92px;height:138px;border-radius:10px;background:{{c.c}};z-index:2;box-shadow:0 18px 30px -10px rgba(0,0,0,.45)"></div>
+</div>
+<div style="margin-top:20px;font:800 21px/1.1 'Bricolage Grotesque',sans-serif">{{c.title}}</div>
+<div style="margin-top:6px;font-size:13px;font-weight:600;opacity:.8">{{c.meta}}</div>
+</a>
+</for-each>
+</div>
+</main>
+</div>

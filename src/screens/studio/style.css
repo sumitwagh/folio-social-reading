@@ -1,0 +1,9 @@
+body{margin:0;background:#F4F3F8}*{box-sizing:border-box}a{color:inherit;text-decoration:none}button{font-family:inherit}
+.press{transition:transform .2s}.press:active{transform:scale(.92)}
+.spark{transition:transform .35s cubic-bezier(.2,.9,.3,1.3),box-shadow .35s}.spark:hover{transform:translateY(-3px) rotate(-.6deg)}
+@keyframes orb{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.15) rotate(180deg)}}.orb{animation:orb 1.6s ease-in-out infinite}
+@keyframes rise{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}.rise{animation:rise .55s cubic-bezier(.2,.9,.3,1.2) both}
+.stg>*{animation:rise .6s cubic-bezier(.2,.9,.3,1.3) both}.stg>*:nth-child(1){animation-delay:.25s}.stg>*:nth-child(2){animation-delay:.45s}.stg>*:nth-child(3){animation-delay:.65s}.stg>*:nth-child(4){animation-delay:.85s}.card-in{animation:cardin .7s cubic-bezier(.2,.9,.3,1.3) .1s both}@keyframes cardin{from{opacity:0;transform:scale(.92) rotate(-1.5deg)}to{opacity:1;transform:none}}
+@keyframes sh{0%{background-position:-400px 0}100%{background-position:400px 0}}.sh{background:linear-gradient(90deg,#EEECFF 0,#D9D4FF 50%,#EEECFF 100%);background-size:800px 100%;animation:sh 1.2s linear infinite;border-radius:10px}
+@media (max-width:1100px){.cols>*{flex-basis:100%!important}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

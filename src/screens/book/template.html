@@ -1,0 +1,89 @@
+<div style="min-height:100vh;background:#F4F3F8;color:#14121F;font-family:'Plus Jakarta Sans',system-ui,sans-serif;display:flex;flex-wrap:wrap;align-items:flex-start">
+<div style="flex:1 1 248px;max-width:100%"><!--sidebar--></div>
+<main style="flex:999 1 560px;min-width:0;padding:28px 32px 64px">
+<a href="#/discover" style="display:inline-flex;align-items:center;gap:6px;height:44px;font-size:14px;font-weight:600;color:#5E5B70">← Back to Discover</a>
+
+<section style="margin-top:8px;border-radius:32px;background:#14121F;color:#fff;padding:36px;display:flex;flex-wrap:wrap;gap:40px;position:relative;overflow:hidden">
+<div aria-hidden="true" style="position:absolute;width:420px;height:420px;border-radius:50%;background:#5B4BFF;right:-120px;top:-180px;opacity:.55"></div>
+<div aria-hidden="true" style="position:absolute;width:220px;height:220px;border-radius:50%;background:#FF6B4A;right:180px;bottom:-140px;opacity:.5"></div>
+<div class="tilt" style="flex:0 0 auto;width:230px;height:345px;border-radius:18px;background:#0E0D17;position:relative;overflow:hidden;box-shadow:0 30px 60px -20px #000;outline:2px solid rgba(255,255,255,.1)">
+<div style="position:absolute;width:150px;height:150px;border-radius:50%;right:-40px;top:-40px;background:#FFC93C"></div>
+<div style="position:absolute;inset:0;padding:22px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-size:11px;font-weight:800;letter-spacing:.12em">LITERARY SCI-FI</span><span style="font:800 32px/.98 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em">The Cartographer of Silence</span><span style="font-size:12px;font-weight:700">Mira Okafor</span></div>
+</div>
+<div style="flex:1 1 360px;min-width:0;position:relative;z-index:2;display:flex;flex-direction:column">
+<div style="display:flex;flex-wrap:wrap;gap:8px"><span style="padding:6px 12px;border-radius:999px;background:#FFC93C;color:#2A2000;font-size:12px;font-weight:800">#2 TRENDING</span><span style="padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.14);font-size:12px;font-weight:700">Book of the week</span></div>
+<h1 style="margin:16px 0 0;font:800 clamp(36px,4vw,56px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">The Cartographer of Silence</h1>
+<div style="display:flex;align-items:center;gap:12px;margin-top:14px"><a href="#/author" style="display:flex;align-items:center;gap:10px"><span style="width:40px;height:40px;border-radius:14px;background:#FFC93C;color:#2A2000;display:grid;place-items:center;font-weight:800">MO</span><span><span style="display:block;font-weight:700">Mira Okafor</span><span style="font-size:12px;color:#C9C6D8">Influence 94 · 48.2k followers</span></span></a><button type="button" class="press" onClick="{{toggleFollow}}" style="height:38px;padding:0 14px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;{{followStyle}}">{{followLabel}}</button></div>
+<p style="margin:18px 0 0;max-width:560px;font-size:16px;line-height:1.6;color:#D8D5E6">A mapmaker charts a city where sound is rationed — and finds the one street that was never meant to be quiet.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;font-size:13px;font-weight:700"><span style="padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.1)">★ 4.8 · 9.4k ratings</span><span style="padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.1)">384 pages</span><span style="padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.1)">18.2k reading now</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:22px">
+<a href="#/feed" class="press" style="height:52px;padding:0 22px;border-radius:16px;background:#fff;color:#14121F;font-weight:700;display:inline-flex;align-items:center">Start reading</a>
+<button type="button" class="press" onClick="{{toggleBuddy}}" style="height:52px;padding:0 20px;border-radius:16px;font-weight:700;font-size:15px;cursor:pointer;{{buddyStyle}}">{{buddyLabel}}</button>
+<button type="button" class="press" onClick="{{toggleShelf}}" style="height:52px;padding:0 20px;border-radius:16px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-weight:700;font-size:15px;cursor:pointer">{{shelfLabel}}</button>
+</div>
+</div>
+</section>
+
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px">
+<span style="font-size:14px;font-weight:700;color:#5E5B70;margin-right:4px">How it made people feel:</span>
+<for-each list="{{reacts}}" as="r"><button type="button" class="press" onClick="{{r.pick}}" aria-pressed="{{r.on}}" style="position:relative;height:44px;padding:0 16px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;transition:transform .5s var(--spring),background .3s,color .3s;{{r.style}}">{{r.label}} <span style="opacity:.75;margin-left:4px">{{r.n}}</span><show-if value="{{r.burst}}"><span class="burst" aria-hidden="true"><i style="--a:0deg;background:#FFC93C"></i><i style="--a:60deg;background:#1FC8A0"></i><i style="--a:120deg;background:#FF7AC6"></i><i style="--a:180deg;background:#5B4BFF"></i><i style="--a:240deg;background:#FF6B4A"></i><i style="--a:300deg;background:#FFC93C"></i></span></show-if></button></for-each>
+</div>
+
+<div class="cols" style="display:flex;flex-wrap:wrap;gap:24px;margin-top:24px;align-items:flex-start">
+<div style="flex:2 1 520px;min-width:0">
+<div role="tablist" aria-label="Book tabs" style="position:relative;display:inline-flex;gap:4px;padding:5px;border-radius:16px;background:#fff;border:1px solid #E7E5EE;max-width:100%;overflow-x:auto;scrollbar-width:none"><span class="ind" aria-hidden="true" style="transform:translateX({{tabX}}px)"></span>
+<for-each list="{{tabs}}" as="t"><button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="position:relative;z-index:1;width:124px;height:42px;padding:0;border-radius:12px;border:0;background:transparent;font-size:14px;font-weight:700;cursor:pointer;transition:color .3s;{{t.style}}">{{t.label}}</button></for-each>
+</div>
+<show-if value="{{isDisc}}">
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
+<for-each list="{{threads}}" as="d">
+<div class="lift up" style="display:flex;gap:16px;align-items:center;padding:18px;border-radius:22px;background:#fff;border:1px solid #E7E5EE;animation-delay:{{d.d}}">
+<button type="button" class="press" onClick="{{d.vote}}" aria-label="Upvote" style="flex:0 0 auto;width:58px;height:58px;border-radius:16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:14px;{{d.voteStyle}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4l8 10H4z"/></svg>{{d.votes}}</button>
+<a href="#/community" style="flex:1;min-width:0"><span style="display:block;font-weight:700;font-size:16px;line-height:1.35">{{d.title}}</span><span style="display:block;margin-top:4px;font-size:13px;color:#5E5B70">{{d.meta}}</span></a>
+<span style="flex:0 0 auto;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;background:{{d.tagBg}};color:{{d.tagInk}}">{{d.tag}}</span>
+</div>
+</for-each>
+</div>
+</show-if>
+<show-if value="{{isRev}}">
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
+<for-each list="{{reviews}}" as="r">
+<article class="up" style="padding:22px;border-radius:22px;background:#fff;border:1px solid #E7E5EE;animation-delay:{{r.d}}">
+<div style="display:flex;align-items:center;gap:12px"><span style="width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-weight:800;background:{{r.color}};color:#14121F">{{r.initials}}</span><div style="flex:1"><div style="font-weight:700">{{r.name}} <span style="margin-left:6px;padding:3px 8px;border-radius:999px;background:#EEECFF;color:#3B2DC9;font-size:11px;font-weight:800">{{r.badge}}</span></div><div style="font-size:13px;color:#5E5B70">{{r.meta}}</div></div><div style="color:#C77700;font-weight:800">{{r.stars}}</div></div>
+<p style="margin:12px 0 0;font-size:15px;line-height:1.6">{{r.text}}</p>
+<button type="button" class="press" onClick="{{r.like}}" style="margin-top:12px;height:40px;padding:0 14px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;{{r.likeStyle}}">Helpful · {{r.count}}</button>
+</article>
+</for-each>
+</div>
+</show-if>
+<show-if value="{{isQuote}}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:16px">
+<for-each list="{{quotes}}" as="q">
+<div class="lift up" style="padding:22px;border-radius:22px;background:{{q.bg}};color:{{q.ink}};display:flex;flex-direction:column;gap:14px;animation-delay:{{q.d}}"><p style="margin:0;font:800 21px/1.2 'Bricolage Grotesque',sans-serif">“{{q.t}}”</p><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700"><span>{{q.where}}</span><button type="button" class="press" onClick="{{q.like}}" style="height:36px;padding:0 12px;border-radius:999px;border:0;cursor:pointer;font-size:12px;font-weight:800;{{q.likeStyle}}">♥ {{q.n}}</button></div></div>
+</for-each>
+</div>
+</show-if>
+</div>
+
+<aside style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:16px">
+<div style="padding:22px;border-radius:24px;background:#fff;border:1px solid #E7E5EE">
+<div style="display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;border-radius:10px;background:#EEECFF;display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B4BFF" stroke-width="2" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9.7l-4.2 3.2 1.4 5.1L12 15.2 7.8 18l1.4-5.1L5 9.7l5.2-1.8z"/></svg></span><span style="font:700 18px 'Bricolage Grotesque',sans-serif">AI TL;DR</span></div>
+<label style="display:block;margin-top:16px"><span style="display:flex;justify-content:space-between;font-size:13px;font-weight:700"><span>Spoiler level</span><span style="color:#3B2DC9">{{lvlName}}</span></span><input type="range" min="0" max="2" step="1" value="{{lvl}}" onChange="{{onLvl}}" style="width:100%;margin-top:10px"></label>
+<p class="pop" style="margin:12px 0 0;font-size:15px;line-height:1.6;animation-name:{{popName}}">{{summary}}</p>
+<div style="margin-top:10px;font-size:12px;color:#5E5B70">From the book + 412 community threads</div>
+</div>
+<a href="#/community" class="lift" style="display:block;padding:22px;border-radius:24px;background:#FF6B4A;color:#14121F">
+<div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.08em"><span class="pulse" style="width:8px;height:8px;border-radius:50%;background:#14121F"></span>LIVE · CHAPTER 9 ROOM</div>
+<div style="margin-top:10px;font:800 22px/1.15 'Bricolage Grotesque',sans-serif">86 readers are on this chapter right now</div>
+<div style="margin-top:14px;height:48px;border-radius:14px;background:#14121F;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">Hop in</div>
+</a>
+<div style="padding:22px;border-radius:24px;background:#fff;border:1px solid #E7E5EE">
+<div style="font:700 18px 'Bricolage Grotesque',sans-serif">Friends reading it</div>
+<div style="display:flex;flex-direction:column;gap:14px;margin-top:14px">
+<for-each list="{{friends}}" as="f"><div style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:13px;background:{{f.color}};color:#14121F">{{f.initials}}</span><div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700"><span>{{f.name}}</span><span style="color:#5E5B70">{{f.p}}%</span></div><div style="height:6px;margin-top:6px;border-radius:6px;background:#F0EEF5"><div style="height:100%;border-radius:6px;background:{{f.color}};width:{{f.p}}%"></div></div></div></div></for-each>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</div>

@@ -1,0 +1,16 @@
+body{margin:0;background:#F4F3F8}*{box-sizing:border-box}a{color:inherit;text-decoration:none}button,input{font-family:inherit}
+.lift{transition:transform .35s cubic-bezier(.2,.9,.3,1.3),box-shadow .35s}.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(40,30,90,.35)}
+.press{transition:transform .2s}.press:active{transform:scale(.94)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,107,74,.6)}100%{box-shadow:0 0 0 10px rgba(255,107,74,0)}}.pulse{animation:pulse 1.4s ease-out infinite}
+@keyframes eq{0%,100%{height:6px}50%{height:22px}}.eq span{display:inline-block;width:4px;border-radius:4px;background:#1FC8A0;animation:eq 1s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-10px) rotate(var(--r))}}.bob{animation:bob 5s ease-in-out infinite}
+@keyframes prog{from{width:0}to{width:100%}}@keyframes prog2{from{width:0}to{width:100%}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}.pop{animation:pop .45s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes mq{to{transform:translateX(-50%)}}.mq{display:flex;gap:16px;width:max-content;animation:mq 50s linear infinite}.mq:hover{animation-play-state:paused}
+.ring{transition:transform .3s cubic-bezier(.2,.9,.3,1.3)}.ring:hover{transform:scale(1.06)}
+@media (max-width:1100px){.bento>*{grid-column:span 12!important}}
+:root{--spring:linear(0, 0.141 4.4%, 0.723 12.9%, 1.017 19.4%, 1.108 26.7%, 1.067 34.3%, 0.976 45.3%, 1.002 62.3%, 1)}@property --k{syntax:'<integer>';inherits:false;initial-value:0}@property --r{syntax:'<integer>';inherits:false;initial-value:0}@counter-style pad3{system:extends decimal;pad:3 "0"}
+.cnt{counter-reset:k var(--k) r var(--r);animation:cnt 1.8s cubic-bezier(.16,1,.3,1) .2s forwards}.cnt::after{content:counter(k) "," counter(r, pad3)}.cnt1::after{content:counter(r)}@keyframes cnt{to{--k:var(--tk);--r:var(--tr)}}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.burst{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none}.burst i{position:absolute;width:7px;height:7px;margin:-3.5px;border-radius:50%;animation:bst .6s cubic-bezier(.16,1,.3,1) forwards}@keyframes bst{0%{transform:rotate(var(--a)) translateY(0) scale(1);opacity:1}100%{transform:rotate(var(--a)) translateY(-34px) scale(.2);opacity:0}}
+@keyframes drop{from{opacity:0;transform:translateY(-14px) scale(.94)}to{opacity:1;transform:none}}.drop{animation:drop .55s var(--spring) both}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}.burst{display:none}}
