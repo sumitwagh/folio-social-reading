@@ -19,7 +19,7 @@ function show(path) {
   current?.destroy?.();
   host.replaceChildren();
   screenStyle.textContent = route.style;
-  document.title = `${route.title} · Folio`;
+  document.title = `${route.title} · Chorus`;
   current = mount(route.Screen, {
     root: host,
     markup: route.markup.replace('<!--sidebar-->', sidebarMarkup),

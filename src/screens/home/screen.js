@@ -43,7 +43,7 @@ export default class HomeScreen extends ViewModel {
       notifOpen: !!s.notif, notifExp: s.notif ? 'true' : 'false', hasUnread: !s.seenN,
       toggleNotif: () => this.setState({ notif: !s.notif, seenN: true }),
       notifStyle: s.notif ? 'background:#14121F;color:#fff;border:1px solid #14121F' : 'background:#fff;color:#14121F;border:1px solid #E7E5EE',
-      notifs: [['Mira Okafor','MO','#14121F','#FFC93C','replied to your theory: “Re-read the dedication.”','2m','#/community'],['Leila Haddad','LH','#1FC8A0','#05332A','invited you to a buddy read of Salt & Static','18m','#/book'],['Your companion','✦','#EEECFF','#3B2DC9','built you a Salt-air mysteries shelf','1h','#/discover'],['Folio','+','#FFC93C','#2A2000','You climbed 41 places this week','3h','#/leaderboard']].map(([who, i2, bg, ink, what, when, href], j) => ({ who, i: i2, bg, ink, what, when, href, d: (j * 0.05) + 's' })),
+      notifs: [['Mira Okafor','MO','#14121F','#FFC93C','replied to your theory: “Re-read the dedication.”','2m','#/community'],['Leila Haddad','LH','#1FC8A0','#05332A','invited you to a buddy read of Salt & Static','18m','#/book'],['Your companion','✦','#EEECFF','#3B2DC9','built you a Salt-air mysteries shelf','1h','#/discover'],['Chorus','+','#FFC93C','#2A2000','You climbed 41 places this week','3h','#/leaderboard']].map(([who, i2, bg, ink, what, when, href], j) => ({ who, i: i2, bg, ink, what, when, href, d: (j * 0.05) + 's' })),
       roomCount: room ? '1,941' : '1,940',
       toggleRoom: () => this.setState({ room: !room }),
       roomLabel: room ? 'You’re in the room · raise hand' : 'Join the live room',

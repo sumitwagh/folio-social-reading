@@ -1,9 +1,9 @@
 {
-  "name": "folio-social-reading",
+  "name": "chorus",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Folio \u00b7 Social Reading: A social reading home: feed, community, leaderboard, AI studio and creator hub.",
+  "description": "Chorus: A social reading home: feed, community, leaderboard, AI studio and creator hub.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

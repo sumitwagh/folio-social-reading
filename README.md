@@ -1,9 +1,9 @@
-# Folio · Social Reading
+# Chorus
 
-A social reading home for Folio: a bento home page, book discovery, book pages, author profiles,
+A Folio concept, the social reading direction: a bento home page, book discovery, book pages, author profiles,
 a community forum and feed, a leaderboard, an AI content studio and a creator hub, all connected.
 
-This is one of three independent Folio projects, each in its own repository with its own
+This is one of three independent Folio concept projects, each in its own repository with its own
 dependencies, configuration and deployment. Nothing is shared, so you can change it freely.
 
 ## Run it
@@ -65,5 +65,5 @@ CSS is swapped in only while it is showing, so class names cannot clash.
 
 ## Deploy
 
-Linked to the Vercel project `folio-social-reading`. Every push to `main` redeploys; pull
+Linked to the Vercel project `chorus`. Every push to `main` redeploys; pull
 requests get preview URLs. To deploy by hand: `npx vercel --prod`.
